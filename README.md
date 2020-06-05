@@ -17,5 +17,7 @@ pipenv install
 # Usage 
 '''sh
 set FLASK_APP=web_app
-flask run
+flask db init
+flask db migrate
+flask db upgrade
 '''
