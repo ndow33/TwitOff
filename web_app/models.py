@@ -5,6 +5,8 @@ db = SQLAlchemy()
 
 migrate = Migrate()
 
+# Creates a piece of data for the book database
+
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(128))

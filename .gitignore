@@ -1,2 +1,6 @@
 migrations
 *.db
+
+# ignore seret credentials
+.env
+
