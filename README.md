@@ -12,12 +12,12 @@ cd twitoff
 
 '''sh
 pipenv install
+flask db init
+flask db migrate
+flask db upgrade
 '''
 
 # Usage 
 '''sh
 set FLASK_APP=web_app
-flask db init
-flask db migrate
-flask db upgrade
 '''

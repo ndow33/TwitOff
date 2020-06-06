@@ -4,6 +4,7 @@ from web_app.models import db, migrate
 from web_app.routes.home_routes import home_routes
 from web_app.routes.book_routes import book_routes
 
+# the name of the db file
 DATABASE_URI = "sqlite:///twitoff_dev.db" # using relative filepath
 
 # define a function to create a new flask app based on the home_routes blueprint
