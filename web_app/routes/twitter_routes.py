@@ -41,4 +41,5 @@ def get_user(screen_name=None):
         db.session.add(db_tweet)
         counter+=1
     db.session.commit()
-    return "OK"
+    #return("Awesome Sauce")
+    return render_template("user.html", user=db_user, tweets=statuses)
