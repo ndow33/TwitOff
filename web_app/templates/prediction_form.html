@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block content %}
+
     <h2>Prediction Time</h2>
 
     <p>Use the form below to predict which user is more likely to say a given tweet...</p>
@@ -34,5 +30,4 @@
 
         <button>Submit</button>
     </form>
-</body>
-</html>
+{% endblock %}
