@@ -13,16 +13,16 @@ def predict():
     screen_name_a = request.form["screen_name_a"]
     screen_name_b = request.form["screen_name_b"]
     tweet_text = request.form["tweet_text"]
-    '''
+    
     print("----------------------------------------")
     print("FETCHING TWEETS FROM THE DATABASE")
-    user_a = User.query.filter(User.screen_name == screen_name_a).one() # what does .one() do?
-    user_b = User.query.filter(User.screen_name == screen_name_b).one()
+    user_a = User.query.filter_by(screen_name = screen_name_a).one() # what does .one() do?
+    user_b = User.query.filter_by(screen_name = screen_name_b).one()
     user_a_tweets = user_a.tweets
     user_b_tweets = user_b.tweets
     print("USER A ", user_a.screen_name, len(user_a.tweets))
     print("USER B ", user_b.screen_name, len(user_b.tweets))
-
+    '''
     print("-------------------------------------------")
     print("TRAINING THE MODEL")
     embeddings = []
