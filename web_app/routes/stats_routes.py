@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, render_template
 from sklearn.linear_model import LogisticRegression 
 from web_app.models import User, Tweet
-from web_app.services.basilica_services import connection
+from web_app.services.basilica_services import connection as basilica_api_client
 
 stats_routes = Blueprint("stats_routes", __name__) # what does this do?
 
@@ -22,11 +22,11 @@ def predict():
     user_b_tweets = user_b.tweets
     print("USER A ", user_a.screen_name, len(user_a.tweets))
     print("USER B ", user_b.screen_name, len(user_b.tweets))
-    '''
+    
     print("-------------------------------------------")
     print("TRAINING THE MODEL")
-    embeddings = []
-    labels = []
+    embeddings = [] # an empty list that will be filled with numeric embeddings of the tweets
+    labels = [] # an empty list that will be filled with who tweeted those embedded tweets
     for tweet in user_a_tweets:
         labels.append(user_a.screen_name) # what does this do?
         embeddings.append(tweet.embedding) # what does this do? Which package is it from?
@@ -36,19 +36,18 @@ def predict():
         embeddings.append(tweet.embedding)
     
     classifier = LogisticRegression()
-    classifier.fit(embeddings, labels)
-
+    classifier.fit(embeddings, labels) # embeddings = x values, labels = y values
+    
     print("-----------------------------------------")
     print("MAKING A PREDICTION")
 
-    basilica_api = basilica_api_client()
-    example_embedding = basilica_api.embed_sentence(tweet_text)
+    example_embedding = basilica_api_client.embed_sentence(tweet_text, model="twitter")
     result = classifier.predict([example_embedding])
-    '''
+    
 
     return render_template("prediction_results.html",
         screen_name_a=screen_name_a,
         screen_name_b=screen_name_b,
         tweet_text=tweet_text,
-        screen_name_most_likely= "TODO"
-        ) # result[0])
+        screen_name_most_likely= result[0]
+        )
