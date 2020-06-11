@@ -8,12 +8,15 @@ from web_app.routes.stats_routes import stats_routes
 
 # the name of the db file
 DATABASE_URI = "sqlite:///twitoff_dev.db" # using relative filepath
+SECRET_KEY = "temporary secret value. todo read from env var and customize on production to keep session secure"
 
 # define a function to create a new flask app based on the home_routes blueprint
 def create_app():
     app = Flask(__name__)
+    app.config["SECRET_KEY"] = SECRET_KEY
 
     app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URI
+
     db.init_app(app)
     migrate.init_app(app, db)
 

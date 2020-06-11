@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request, render_template #, flash, redirect
+from flask import Blueprint, jsonify, request, render_template, flash, redirect
 
 from web_app.models import db, Book, parse_records
 
@@ -30,10 +30,11 @@ def create_book():
     new_book = Book(title=request.form["title"], author_id=request.form["author_name"]) #this line needs to match the form in new_book.html
     db.session.add(new_book)
     db.session.commit()
-
+    '''
     return jsonify({
         "message": "BOOK CREATED OK",
         "book": dict(request.form)
-    })
-    #flash(f"Book '{new_book.title}' created successfully!", "success")
-    #return redirect(f"/books")
+    })'''
+    
+    flash(f"Book '{new_book.title}' created successfully!", "success")
+    return redirect(f"/books")
