@@ -4,6 +4,7 @@ from web_app.models import db, migrate
 from web_app.routes.home_routes import home_routes
 from web_app.routes.book_routes import book_routes
 from web_app.routes.twitter_routes import twitter_routes
+from web_app.routes.stats_routes import stats_routes
 
 # the name of the db file
 DATABASE_URI = "sqlite:///twitoff_dev.db" # using relative filepath
@@ -21,6 +22,7 @@ def create_app():
     app.register_blueprint(home_routes)
     app.register_blueprint(book_routes)
     app.register_blueprint(twitter_routes)
+    app.register_blueprint(stats_routes)
     return app
 
 
