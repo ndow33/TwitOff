@@ -11,7 +11,6 @@ cd twitoff
 # Setup 
 
 '''sh
-pipenv install
 flask db init
 flask db migrate
 flask db upgrade
