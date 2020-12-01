@@ -4,14 +4,13 @@ https://twitoff-ndow33.herokuapp.com/
 
 # Installations
 git clone https://github.com/ndow33/TwitOff.git  
-cd twitoff
-
 
 # Setup 
-flask db init  
-flask db migrate  
-flask db upgrade  
+cd twitoff
+pipenv shell
+pipenv sync
+set FLASK_APP=web_app
 
 # Usage
-set FLASK_APP=web_app
+python -m flask run
 
